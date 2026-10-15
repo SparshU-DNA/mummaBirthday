@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Happy Birthday, Mom 💖</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css.css">
+</head>
+<body>
+
+<!-- CLOSED STATE: only the text, the heart and the finger -->
+<div class="stage">
+  <div class="prompt">tap to open</div>
+  <button class="heart" id="heart" aria-label="Tap to open your birthday card">
+    <span class="half l">
+      <svg viewBox="0 0 32 29.6" aria-hidden="true">
+        <path d="M23.6,0c-3.4,0-6.4,2.1-7.6,5.1C14.8,2.1,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"/>
+        <path d="M5.2 8.2c.3-2 1.8-3.4 3.6-3.5" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </span>
+    <span class="half r">
+      <svg viewBox="0 0 32 29.6" aria-hidden="true">
+        <path d="M23.6,0c-3.4,0-6.4,2.1-7.6,5.1C14.8,2.1,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"/>
+      </svg>
+    </span>
+  </button>
+  <div class="finger" aria-hidden="true">👆</div>
+</div>
+
+<!-- OPENED STATE: the card -->
+<main class="reveal" id="reveal">
+  <article class="card">
+
+    <!-- PHOTO 1: put your landscape photo path/URL in src="" -->
+    <figure class="photo left p1">
+      <div class="ph"><span>photo 1</span><img src="photos/img2.jpeg" alt="A favourite memory with Mom" onerror="this.style.display='none'"></div>
+    </figure>
+
+    <h1>Happy Birthday, Mumma!</h1>
+
+    <!-- PHOTO 2 -->
+    <figure class="photo right p2">
+      <div class="ph"><span>photo 2</span><img src="photos/img7.jpeg" alt="Mom and family" onerror="this.style.display='none'"></div>
+    </figure>
+
+    <div class="msg">
+      <p>Another year of you, and I still don't have the right words for what you mean to me. But I'll try.</p>
+      <p>Ever since I left for college, I have missed every single second I've spent away from you. Every quiet moment, every call that ends too soon, every time something happens and my first thought is to tell you. I would trade almost anything for one more ordinary evening sitting next to you.</p>
+
+      <!-- PHOTO 3 -->
+      <figure class="photo left p3">
+        <div class="ph"><span>photo 3</span><img src="photos/img3.jpeg" alt="Another memory together" onerror="this.style.display='none'"></div>
+      </figure>
+
+      <p>Everything good in me started with you. Every late night you stayed up worrying, every sacrifice you made look easy, every time you believed in me before I did. I carry all of it with me, everywhere I go. Distance has only shown me how much of my heart lives at home.</p>
+      <p>Today is all about you. I hope it's filled with laughter, your favourite things, and all the love you've given me coming right back to you.</p>
+      <p>Happy Birthday, Mumma. I love you more than words can hold, and I'm counting the days until I'm home.</p>
+    </div>
+
+    <!-- PHOTO 4 -->
+    <figure class="photo right p4">
+      <div class="ph"><span>photo 4</span><img src="photos/img6.jpeg" alt="One more memory" onerror="this.style.display='none'"></div>
+    </figure>
+
+    <p class="sign">Forever your babu ♥</p>
+
+  </article>
+</main>
+
+<script>
+  const heart = document.getElementById('heart');
+  const reveal = document.getElementById('reveal');
+
+  // The card always starts closed on load or refresh.
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+
+  heart.addEventListener('click', () => {
+    document.body.classList.add('opened');
+    document.body.style.overflow = 'hidden';
+    heart.disabled = true;
+    reveal.scrollTop = 0;
+  });
+
+  // Back/forward cache: reload so the heart is closed again.
+  window.addEventListener('pageshow', e => { if (e.persisted) location.reload(); });
+</script>
+</body>
+</html>
